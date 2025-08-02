@@ -1,0 +1,91 @@
+import React, { useState, useEffect } from 'react';
+import { MainScreen } from './components/MainScreen';
+import { MenuScreen } from './components/MenuScreen';
+import { ChefProfile } from './components/ChefProfile';
+import { Cart } from './components/Cart';
+import { UserPreferences } from './types';
+
+function App() {
+  const [currentScreen, setCurrentScreen] = useState<'onboarding' | 'main' | 'menu' | 'chef' | 'cart'>('main');
+  const [userPreferences, setUserPreferences] = useState<UserPreferences | null>({
+    name: 'Пользователь',
+    cuisine: 'all',
+    dietaryRestrictions: [],
+    spiceLevel: 'medium'
+  });
+  const [cartItems, setCartItems] = useState<any[]>([]);
+  const [selectedChef, setSelectedChef] = useState<any>(null);
+
+
+
+  const handleAddToCart = (dish: any) => {
+    setCartItems(prev => [...prev, dish]);
+  };
+
+  const handleRemoveFromCart = (dishId: string) => {
+    setCartItems(prev => prev.filter(item => item.id !== dishId));
+  };
+
+  const handleShowChef = (chef: any) => {
+    setSelectedChef(chef);
+    setCurrentScreen('chef');
+  };
+
+  const renderScreen = () => {
+    switch (currentScreen) {
+      case 'main':
+        return (
+          <MainScreen
+            userPreferences={userPreferences}
+            onAddToCart={handleAddToCart}
+            onShowMenu={() => setCurrentScreen('menu')}
+            onShowCart={() => setCurrentScreen('cart')}
+            onShowChef={handleShowChef}
+            cartCount={cartItems.length}
+          />
+        );
+      case 'menu':
+        return (
+          <MenuScreen
+            onBack={() => setCurrentScreen('main')}
+            onShowChef={handleShowChef}
+          />
+        );
+      case 'chef':
+        return (
+          <ChefProfile
+            chef={selectedChef}
+            onBack={() => setCurrentScreen('main')}
+            onAddToCart={handleAddToCart}
+          />
+        );
+      case 'cart':
+        return (
+          <Cart
+            items={cartItems}
+            onBack={() => setCurrentScreen('main')}
+            onRemove={handleRemoveFromCart}
+          />
+        );
+      default:
+        return (
+          <MainScreen
+            userPreferences={userPreferences}
+            onAddToCart={handleAddToCart}
+            onShowMenu={() => setCurrentScreen('menu')}
+            onShowCart={() => setCurrentScreen('cart')}
+            onShowChef={handleShowChef}
+            cartCount={cartItems.length}
+          />
+        );
+    }
+  };
+
+  return (
+    <div className="min-h-screen">
+      {renderScreen()}
+    </div>
+  );
+}
+
+export default App;
