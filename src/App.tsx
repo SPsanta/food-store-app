@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { MainScreen } from './components/MainScreen';
 import { MenuScreen } from './components/MenuScreen';
 import { ChefProfile } from './components/ChefProfile';
 import { Cart } from './components/Cart';
-import { UserPreferences } from './types';
+import { UserPreferences, Dish, Chef } from './types';
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState<'onboarding' | 'main' | 'menu' | 'chef' | 'cart'>('main');
-  const [userPreferences, setUserPreferences] = useState<UserPreferences | null>({
+  const [userPreferences] = useState<UserPreferences | null>({
     name: 'Пользователь',
     cuisine: 'all',
     dietaryRestrictions: [],
     spiceLevel: 'medium'
   });
-  const [cartItems, setCartItems] = useState<any[]>([]);
-  const [selectedChef, setSelectedChef] = useState<any>(null);
+  const [cartItems, setCartItems] = useState<Dish[]>([]);
+  const [selectedChef, setSelectedChef] = useState<Chef | null>(null);
 
 
 
-  const handleAddToCart = (dish: any) => {
+  const handleAddToCart = (dish: Dish) => {
     setCartItems(prev => [...prev, dish]);
   };
 
@@ -26,7 +26,7 @@ function App() {
     setCartItems(prev => prev.filter(item => item.id !== dishId));
   };
 
-  const handleShowChef = (chef: any) => {
+  const handleShowChef = (chef: Chef) => {
     setSelectedChef(chef);
     setCurrentScreen('chef');
   };

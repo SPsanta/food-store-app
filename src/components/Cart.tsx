@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Minus, Plus, Trash2, MapPin } from 'lucide-react';
 
+import { Dish } from '../types';
+
 interface CartProps {
-  items: any[];
+  items: Dish[];
   onBack: () => void;
   onRemove: (dishId: string) => void;
 }

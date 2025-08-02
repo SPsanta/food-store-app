@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search, Star, ChevronDown } from 'lucide-react';
 import { ChefCard } from './ChefCard';
-import { UserPreferences, Dish } from '../types';
+import { UserPreferences, Dish, Chef } from '../types';
 
 interface MainScreenProps {
   userPreferences: UserPreferences | null;
@@ -20,9 +20,9 @@ export const MainScreen = ({
   onShowChef,
   cartCount
 }: MainScreenProps) => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedChef, setSelectedChef] = useState<any>(null);
+  const [selectedChef, setSelectedChef] = useState<Chef | null>(null);
 
   // Моковые данные продуктов
   const products = [

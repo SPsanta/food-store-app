@@ -1,20 +1,12 @@
 import React, { useState } from 'react';
 import { X, Star, Clock, MapPin, Heart, Utensils } from 'lucide-react';
 
+import { Chef, Dish } from '../types';
+
 interface ChefCardProps {
-  chef: {
-    id: string;
-    name: string;
-    image: string;
-    specialty: string;
-    rating: number;
-    experience: string;
-    location: string;
-    bio: string;
-    dishes: string[];
-  };
+  chef: Chef;
   onClose: () => void;
-  onAddToCart: (dish: any) => void;
+  onAddToCart: (dish: Dish) => void;
 }
 
 export const ChefCard: React.FC<ChefCardProps> = ({ chef, onClose, onAddToCart }) => {
