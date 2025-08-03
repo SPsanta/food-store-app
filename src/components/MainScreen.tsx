@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Search, Star, ChevronDown } from 'lucide-react';
 import { ChefCard } from './ChefCard';
+import { UserProfile } from './UserProfile';
 import { UserPreferences, Dish, Chef } from '../types';
 
 interface MainScreenProps {
@@ -23,6 +24,7 @@ export const MainScreen = ({
   const [selectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedChef, setSelectedChef] = useState<Chef | null>(null);
+  const [showUserProfile, setShowUserProfile] = useState(false);
 
   // Моковые данные продуктов
   const products = [
@@ -187,30 +189,17 @@ export const MainScreen = ({
         </div>
       </div>
 
-      {/* Logo Section */}
-      <div className="flex justify-center py-2 sm:py-4">
-        <div className="bg-orange-500 text-white px-4 sm:px-8 py-2 sm:py-4 rounded-full font-bold text-lg sm:text-xl">
-          ПРОДУКТОВЫЙ МАГАЗИН
-        </div>
-      </div>
+             {/* Logo Section */}
+       <div className="flex justify-center py-2 sm:py-4">
+         <div className="bg-black text-white px-6 sm:px-10 py-3 sm:py-5 rounded-lg font-serif text-xl sm:text-2xl font-bold relative">
+           <span className="relative">
+             U COOK
+             <div className="absolute bottom-0 left-0 right-0 h-1 bg-red-500 transform -translate-y-1" style={{ borderRadius: '50% 50% 0 0' }}></div>
+           </span>
+         </div>
+       </div>
 
-      {/* Navigation */}
-      <nav className="bg-gray-800 py-2 sm:py-3">
-        <div className="flex justify-center space-x-2 sm:space-x-8 text-xs sm:text-sm">
-          <a href="#" className="text-white font-semibold flex items-center">
-            ГЛАВНАЯ <Star size={10} className="ml-1 sm:w-3 sm:h-3" />
-          </a>
-          <a href="#" className="text-white font-semibold flex items-center">
-            АКЦИИ <Star size={10} className="ml-1 sm:w-3 sm:h-3" />
-          </a>
-          <a href="#" className="text-white font-semibold flex items-center">
-            ДОСТАВКА <Star size={10} className="ml-1 sm:w-3 sm:h-3" />
-          </a>
-          <a href="#" className="text-white font-semibold flex items-center">
-            КОНТАКТЫ <Star size={10} className="ml-1 sm:w-3 sm:h-3" />
-          </a>
-        </div>
-      </nav>
+             
 
       {/* Hero Banner */}
       <div className="relative h-32 sm:h-64 bg-gray-200 mb-4 sm:mb-6">
@@ -245,44 +234,9 @@ export const MainScreen = ({
       </div>
 
             {/* Main Content */}
-      <div className="flex flex-col lg:flex-row px-2 sm:px-4 gap-4 lg:gap-6">
-        {/* Left Sidebar */}
-        <div className="w-full lg:w-64 space-y-4 order-2 lg:order-1">
-          {/* Categories */}
-          <div className="bg-gray-800 text-white p-3 sm:p-4 rounded-lg">
-            <h3 className="font-bold mb-3 sm:mb-4 text-sm sm:text-base">КАТЕГОРИИ</h3>
-            <div className="space-y-1 sm:space-y-2">
-              {categories.map((category, index) => (
-                <div key={index} className="flex items-center justify-between cursor-pointer hover:text-orange-300">
-                  <span className="text-xs sm:text-sm">{category}</span>
-                  {category === 'МЯСО' && <ChevronDown size={12} className="sm:w-4 sm:h-4" />}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Cart */}
-          <div className="bg-orange-500 text-white p-3 sm:p-4 rounded-lg">
-            <h3 className="font-bold mb-3 sm:mb-4 text-sm sm:text-base">КОРЗИНА</h3>
-            <div className="space-y-1 sm:space-y-2 text-xs sm:text-sm">
-              <div>Нет товаров</div>
-              <div>Доставка: ₽0</div>
-              <div className="font-bold">Итого: ₽0</div>
-            </div>
-            <div className="flex justify-between mt-3 sm:mt-4">
-              <button className="bg-white text-orange-500 px-2 sm:px-4 py-1 sm:py-2 rounded font-semibold text-xs sm:text-sm">
-                КОРЗИНА
-              </button>
-              <span className="text-white">•</span>
-              <button className="bg-white text-orange-500 px-2 sm:px-4 py-1 sm:py-2 rounded font-semibold text-xs sm:text-sm">
-                ОФОРМИТЬ
-              </button>
-            </div>
-          </div>
-        </div>
-
+      <div className="px-2 sm:px-4">
         {/* Products Grid */}
-        <div className="flex-1 order-1 lg:order-2">
+        <div className="w-full">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {filteredProducts.map((product) => (
               <div key={product.id} className="relative group cursor-pointer">
@@ -337,44 +291,64 @@ export const MainScreen = ({
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="mt-8 sm:mt-12 bg-gray-100 py-4 sm:py-8 px-2 sm:px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 text-xs sm:text-sm text-gray-600">
-          <div className="space-y-1 sm:space-y-2">
-            <div>КОНТАКТЫ</div>
-            <div>ДОСТАВКА</div>
-            <div>ПРАВОВАЯ ИНФОРМАЦИЯ</div>
-            <div>УСЛОВИЯ ИСПОЛЬЗОВАНИЯ</div>
-            <div>О НАС</div>
-          </div>
-          <div className="space-y-1 sm:space-y-2">
-            <div>ВАШ АККАУНТ</div>
-            <div>ЛИЧНАЯ ИНФОРМАЦИЯ</div>
-            <div>АДРЕСА</div>
-            <div>СКИДКИ</div>
-            <div>ИСТОРИЯ ЗАКАЗОВ</div>
-          </div>
-          <div className="space-y-1 sm:space-y-2">
-            <div>ВОЙТИ</div>
-            <div>ВАША КОРЗИНА</div>
-            <div>ИЗБРАННОЕ</div>
-            <div>ОТСЛЕДИТЬ ЗАКАЗ</div>
-            <div>ПОМОЩЬ</div>
-          </div>
-        </div>
-        <div className="mt-4 sm:mt-8 text-xs text-gray-500">
-          © 2012 Powered by PrestaShop™ Все права защищены.
-        </div>
-      </footer>
+             {/* Bottom Navigation Menu */}
+       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2 z-50">
+         <div className="flex justify-around items-center">
+                       <div className="flex flex-col items-center space-y-1 cursor-pointer" onClick={() => window.location.reload()}>
+              <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
+                <span className="text-white text-sm">🏠</span>
+              </div>
+              <span className="text-xs text-orange-500 font-medium">Главная</span>
+            </div>
+           <div className="flex flex-col items-center space-y-1">
+             <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+               <span className="text-gray-600 text-sm">📋</span>
+             </div>
+             <span className="text-xs text-gray-600">Меню</span>
+           </div>
+           <div className="flex flex-col items-center space-y-1">
+             <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+               <span className="text-gray-600 text-sm">👨‍🍳</span>
+             </div>
+             <span className="text-xs text-gray-600">Шефы</span>
+           </div>
+           <div className="flex flex-col items-center space-y-1 relative">
+             <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+               <span className="text-gray-600 text-sm">🛒</span>
+             </div>
+             {cartCount > 0 && (
+               <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center">
+                 <span className="text-white text-xs font-bold">{cartCount}</span>
+               </div>
+             )}
+             <span className="text-xs text-gray-600">Корзина</span>
+           </div>
+                       <div className="flex flex-col items-center space-y-1 cursor-pointer" onClick={() => setShowUserProfile(true)}>
+              <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+                <span className="text-gray-600 text-sm">👤</span>
+              </div>
+              <span className="text-xs text-gray-600">Профиль</span>
+            </div>
+         </div>
+       </div>
 
-      {/* Chef Card Modal */}
-      {selectedChef && (
-        <ChefCard
-          chef={selectedChef}
-          onClose={() => setSelectedChef(null)}
-          onAddToCart={onAddToCart}
-        />
-      )}
+       
+
+             {/* Chef Card Modal */}
+       {selectedChef && (
+         <ChefCard
+           chef={selectedChef}
+           onClose={() => setSelectedChef(null)}
+           onAddToCart={onAddToCart}
+         />
+       )}
+
+       {/* User Profile Modal */}
+       {showUserProfile && (
+         <UserProfile
+           onClose={() => setShowUserProfile(false)}
+         />
+       )}
     </div>
   );
 };
