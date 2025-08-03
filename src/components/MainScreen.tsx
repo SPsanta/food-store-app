@@ -1,24 +1,16 @@
 import React, { useState } from 'react';
-import { Search, Star, ChevronDown } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { ChefCard } from './ChefCard';
 import { UserProfile } from './UserProfile';
-import { UserPreferences, Dish, Chef } from '../types';
+import { Dish, Chef } from '../types';
 
 interface MainScreenProps {
-  userPreferences: UserPreferences | null;
   onAddToCart: (dish: Dish) => void;
-  onShowMenu: () => void;
-  onShowCart: () => void;
-  onShowChef: (chef: any) => void;
   cartCount: number;
 }
 
 export const MainScreen = ({
-  userPreferences,
   onAddToCart,
-  onShowMenu,
-  onShowCart,
-  onShowChef,
   cartCount
 }: MainScreenProps) => {
   const [selectedCategory] = useState('all');
@@ -84,17 +76,7 @@ export const MainScreen = ({
     }
   ];
 
-  const categories = [
-    'ФРУКТЫ/ОВОЩИ',
-    'МЯСО',
-    'МОРЕПРОДУКТЫ',
-    'ЗАКУСКИ',
-    'ПИЦЦА/ПАСТА',
-    'ГАРНИРЫ',
-    'АПЕРИТИВЫ',
-    'СНЕКИ',
-    'МОРОЖЕНОЕ'
-  ];
+
 
   // Данные шеф-поваров
   const chefs = [

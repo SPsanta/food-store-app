@@ -36,11 +36,7 @@ function App() {
       case 'main':
         return (
           <MainScreen
-            userPreferences={userPreferences}
             onAddToCart={handleAddToCart}
-            onShowMenu={() => setCurrentScreen('menu')}
-            onShowCart={() => setCurrentScreen('cart')}
-            onShowChef={handleShowChef}
             cartCount={cartItems.length}
           />
         );
@@ -70,11 +66,7 @@ function App() {
       default:
         return (
           <MainScreen
-            userPreferences={userPreferences}
             onAddToCart={handleAddToCart}
-            onShowMenu={() => setCurrentScreen('menu')}
-            onShowCart={() => setCurrentScreen('cart')}
-            onShowChef={handleShowChef}
             cartCount={cartItems.length}
           />
         );
