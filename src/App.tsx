@@ -3,10 +3,11 @@ import { MainScreen } from './components/MainScreen';
 import { MenuScreen } from './components/MenuScreen';
 import { ChefProfile } from './components/ChefProfile';
 import { Cart } from './components/Cart';
+import { RoleSelection } from './components/RoleSelection';
 import { UserPreferences, Dish, Chef } from './types';
 
 function App() {
-  const [currentScreen, setCurrentScreen] = useState<'onboarding' | 'main' | 'menu' | 'chef' | 'cart'>('main');
+  const [currentScreen, setCurrentScreen] = useState<'role-selection' | 'main' | 'menu' | 'chef' | 'cart'>('role-selection');
   const [userPreferences] = useState<UserPreferences | null>({
     name: 'Пользователь',
     cuisine: 'all',
@@ -31,8 +32,21 @@ function App() {
     setCurrentScreen('chef');
   };
 
+  const handleRoleSelection = (role: 'chef' | 'consumer') => {
+    if (role === 'consumer') {
+      setCurrentScreen('main');
+    }
+    // Для роли 'chef' пока ничего не делаем, так как она неактивна
+  };
+
   const renderScreen = () => {
     switch (currentScreen) {
+      case 'role-selection':
+        return (
+          <RoleSelection
+            onSelectRole={handleRoleSelection}
+          />
+        );
       case 'main':
         return (
           <MainScreen
