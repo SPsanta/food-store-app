@@ -60,12 +60,9 @@ export const RoleSelection = ({ onSelectRole }: RoleSelectionProps) => {
               <Utensils size={40} className="text-white" />
             </div>
             <h3 className="text-lg font-semibold text-orange-600 mb-2">Я ЕМ</h3>
-            <p className="text-xs text-gray-600 text-center">
-              Для любителей вкусной еды
-            </p>
-            <div className="mt-3 px-3 py-1 bg-orange-500 rounded-full">
-              <span className="text-xs text-white font-medium">Доступно</span>
-            </div>
+                         <p className="text-xs text-gray-600 text-center">
+               Для любителей вкусной еды
+             </p>
           </div>
         </div>
 
