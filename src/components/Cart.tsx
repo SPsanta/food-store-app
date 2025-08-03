@@ -36,6 +36,7 @@ export const Cart: React.FC<CartProps> = ({ items, onBack, onRemove }) => {
         <button 
           onClick={onBack}
           className="p-2 rounded-full bg-orange-100 hover:bg-orange-200 transition-colors mr-4"
+          aria-label="Назад"
         >
           <ArrowLeft size={24} className="text-orange-600" />
         </button>
@@ -75,6 +76,7 @@ export const Cart: React.FC<CartProps> = ({ items, onBack, onRemove }) => {
                       <button
                         onClick={() => updateQuantity(item.id, getQuantity(item.id) - 1)}
                         className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center hover:bg-orange-200 transition-colors"
+                        aria-label="Уменьшить количество"
                       >
                         <Minus size={16} className="text-orange-600" />
                       </button>
@@ -82,6 +84,7 @@ export const Cart: React.FC<CartProps> = ({ items, onBack, onRemove }) => {
                       <button
                         onClick={() => updateQuantity(item.id, getQuantity(item.id) + 1)}
                         className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center hover:bg-orange-200 transition-colors"
+                        aria-label="Увеличить количество"
                       >
                         <Plus size={16} className="text-orange-600" />
                       </button>
@@ -91,6 +94,7 @@ export const Cart: React.FC<CartProps> = ({ items, onBack, onRemove }) => {
                     <button
                       onClick={() => onRemove(item.id)}
                       className="p-2 rounded-full bg-red-100 hover:bg-red-200 transition-colors"
+                      aria-label="Удалить товар"
                     >
                       <Trash2 size={16} className="text-red-600" />
                     </button>

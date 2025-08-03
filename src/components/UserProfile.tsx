@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { User, MapPin, Heart, Settings, Gift, Clock, Plus, Edit } from 'lucide-react';
+import { RegistrationModal } from './RegistrationModal';
 
 interface UserProfileProps {
   onClose: () => void;
@@ -7,9 +8,11 @@ interface UserProfileProps {
 
 export const UserProfile = ({ onClose }: UserProfileProps) => {
   const [isRegistered, setIsRegistered] = useState(false);
+  const [showRegistration, setShowRegistration] = useState(false);
   const [userData, setUserData] = useState({
     name: 'Гость',
-    email: '',
+    firstName: '',
+    lastName: '',
     phone: '',
     address: 'Не указан',
     points: 0,
@@ -22,7 +25,7 @@ export const UserProfile = ({ onClose }: UserProfileProps) => {
       title: 'Регистрация клиента',
       icon: <User size={20} className="text-orange-500" />,
       description: 'Создайте аккаунт для доступа к бонусам',
-      action: () => setIsRegistered(true)
+      action: () => setShowRegistration(true)
     },
     {
       id: 'orders',
@@ -137,14 +140,32 @@ export const UserProfile = ({ onClose }: UserProfileProps) => {
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="p-4 bg-gray-50 rounded-b-lg">
-          <div className="text-center text-sm text-gray-600">
-            <p>U COOK - Ваш персональный шеф</p>
-            <p className="mt-1">Версия 1.0</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}; 
+                 {/* Footer */}
+         <div className="p-4 bg-gray-50 rounded-b-lg">
+           <div className="text-center text-sm text-gray-600">
+             <p>U COOK - Ваш персональный шеф</p>
+             <p className="mt-1">Версия 1.0</p>
+           </div>
+         </div>
+       </div>
+
+       {/* Registration Modal */}
+       {showRegistration && (
+         <RegistrationModal
+           onClose={() => setShowRegistration(false)}
+           onRegister={(userData) => {
+             setUserData(prev => ({
+               ...prev,
+               firstName: userData.firstName,
+               lastName: userData.lastName,
+               phone: userData.phone,
+               name: `${userData.firstName} ${userData.lastName}`
+             }));
+             setIsRegistered(true);
+             setShowRegistration(false);
+           }}
+         />
+       )}
+     </div>
+   );
+ }; 
