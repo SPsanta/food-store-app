@@ -20,13 +20,13 @@ export const UserProfile = ({ onClose }: UserProfileProps) => {
   });
 
   const menuItems = [
-    {
+    ...(isRegistered ? [] : [{
       id: 'registration',
       title: 'Регистрация клиента',
       icon: <User size={20} className="text-orange-500" />,
       description: 'Создайте аккаунт для доступа к бонусам',
       action: () => setShowRegistration(true)
-    },
+    }]),
     {
       id: 'orders',
       title: 'История заказов',
@@ -116,13 +116,9 @@ export const UserProfile = ({ onClose }: UserProfileProps) => {
                 <h3 className="font-semibold text-gray-800">{item.title}</h3>
                 <p className="text-sm text-gray-600">{item.description}</p>
               </div>
-              <div className="text-gray-400">
-                {item.id === 'registration' && !isRegistered ? (
-                  <Plus size={16} />
-                ) : (
-                  <Edit size={16} />
-                )}
-              </div>
+                             <div className="text-gray-400">
+                 <Edit size={16} />
+               </div>
             </div>
           ))}
         </div>

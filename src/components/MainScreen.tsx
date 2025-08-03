@@ -174,30 +174,17 @@ export const MainScreen = ({
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Top Header */}
-      <div className="bg-gray-100 px-2 sm:px-4 py-2 text-xs sm:text-sm">
-        <div className="flex justify-between items-center">
-          <div className="text-gray-600">
-            Добро пожаловать, Пользователь (выйти)
-          </div>
-          <div className="hidden sm:flex items-center space-x-2 sm:space-x-4 text-gray-600">
-            <span>Ваш аккаунт</span>
-            <span>Валюты</span>
-            <span className="font-semibold">RUB Рубль</span>
-            <span>Ru | En</span>
-          </div>
-        </div>
-      </div>
+      
 
              {/* Logo Section */}
-       <div className="flex justify-center py-2 sm:py-4">
-         <div className="bg-black text-white px-6 sm:px-10 py-3 sm:py-5 rounded-lg font-serif text-xl sm:text-2xl font-bold relative">
-           <span className="relative">
-             U COOK
-             <div className="absolute bottom-0 left-0 right-0 h-1 bg-red-500 transform -translate-y-1" style={{ borderRadius: '50% 50% 0 0' }}></div>
-           </span>
-         </div>
-       </div>
+               <div className="flex justify-center py-3 sm:py-5">
+          <div className="bg-black text-white px-8 sm:px-13 py-4 sm:py-6 rounded-lg font-serif text-2xl sm:text-3xl font-bold relative">
+            <span className="relative">
+              U COOK
+              <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-red-500 transform -translate-y-1" style={{ borderRadius: '50% 50% 0 0' }}></div>
+            </span>
+          </div>
+        </div>
 
              
 
