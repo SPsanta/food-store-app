@@ -232,7 +232,7 @@ export const MainScreen = ({
                                                <img 
                           src={product.chefImage} 
                           alt={product.chefName}
-                          className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-full border-2 sm:border-4 border-white shadow-[0_0_10px_rgba(255,255,255,0.8)] object-cover cursor-pointer hover:scale-110 transition-transform"
+                          className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-full border-2 sm:border-4 border-white shadow-[0_0_10px_rgba(255,255,255,0.8)] object-cover cursor-pointer hover:scale-110 transition-transform"
                          onClick={() => {
                            const chef = chefs.find(c => c.name === product.chefName);
                            if (chef) setSelectedChef(chef);
@@ -242,7 +242,7 @@ export const MainScreen = ({
                            target.style.display = 'none';
                          }}
                        />
-                                               <div className="absolute -bottom-1 -right-1 w-4 h-4 sm:w-4 sm:h-4 lg:w-5 lg:h-5 bg-green-500 rounded-full border-2 border-white shadow-[0_0_5px_rgba(255,255,255,0.6)]"></div>
+                                               <div className="absolute -bottom-1 -right-1 w-5 h-5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 bg-green-500 rounded-full border-2 border-white shadow-[0_0_5px_rgba(255,255,255,0.6)]"></div>
                      </div>
                    </div>
                 </div>
