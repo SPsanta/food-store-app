@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 import { ChefCard } from './ChefCard';
-import { UserProfile } from './UserProfile';
 import { Dish, Chef } from '../types';
 
 interface MainScreenProps {
   onAddToCart: (dish: Dish) => void;
   cartCount: number;
+  onShowRoleSelection: () => void;
 }
 
 export const MainScreen = ({
   onAddToCart,
-  cartCount
+  cartCount,
+  onShowRoleSelection
 }: MainScreenProps) => {
   const [selectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedChef, setSelectedChef] = useState<Chef | null>(null);
-  const [showUserProfile, setShowUserProfile] = useState(false);
 
   // Моковые данные продуктов
   const products = [
@@ -292,7 +292,7 @@ export const MainScreen = ({
              )}
              <span className="text-xs text-gray-600">Корзина</span>
            </div>
-                       <div className="flex flex-col items-center space-y-1 cursor-pointer" onClick={() => setShowUserProfile(true)}>
+                       <div className="flex flex-col items-center space-y-1 cursor-pointer" onClick={onShowRoleSelection}>
               <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
                 <span className="text-gray-600 text-sm">👤</span>
               </div>
@@ -312,12 +312,7 @@ export const MainScreen = ({
          />
        )}
 
-       {/* User Profile Modal */}
-       {showUserProfile && (
-         <UserProfile
-           onClose={() => setShowUserProfile(false)}
-         />
-       )}
+
     </div>
   );
 };

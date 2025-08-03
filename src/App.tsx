@@ -7,7 +7,7 @@ import { RoleSelection } from './components/RoleSelection';
 import { UserPreferences, Dish, Chef } from './types';
 
 function App() {
-  const [currentScreen, setCurrentScreen] = useState<'role-selection' | 'main' | 'menu' | 'chef' | 'cart'>('role-selection');
+  const [currentScreen, setCurrentScreen] = useState<'main' | 'role-selection' | 'menu' | 'chef' | 'cart'>('main');
   const [userPreferences] = useState<UserPreferences | null>({
     name: 'Пользователь',
     cuisine: 'all',
@@ -39,6 +39,10 @@ function App() {
     // Для роли 'chef' пока ничего не делаем, так как она неактивна
   };
 
+  const handleShowRoleSelection = () => {
+    setCurrentScreen('role-selection');
+  };
+
   const renderScreen = () => {
     switch (currentScreen) {
       case 'role-selection':
@@ -52,6 +56,7 @@ function App() {
           <MainScreen
             onAddToCart={handleAddToCart}
             cartCount={cartItems.length}
+            onShowRoleSelection={handleShowRoleSelection}
           />
         );
       case 'menu':
@@ -82,6 +87,7 @@ function App() {
           <MainScreen
             onAddToCart={handleAddToCart}
             cartCount={cartItems.length}
+            onShowRoleSelection={handleShowRoleSelection}
           />
         );
     }

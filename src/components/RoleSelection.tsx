@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ChefHat, Utensils } from 'lucide-react';
+import { UserProfile } from './UserProfile';
 
 interface RoleSelectionProps {
   onSelectRole: (role: 'chef' | 'consumer') => void;
 }
 
 export const RoleSelection = ({ onSelectRole }: RoleSelectionProps) => {
+  const [showUserProfile, setShowUserProfile] = useState(false);
+
+  const handleConsumerSelection = () => {
+    setShowUserProfile(true);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Logo Section */}
@@ -45,10 +52,10 @@ export const RoleSelection = ({ onSelectRole }: RoleSelectionProps) => {
           </div>
 
           {/* Consumer Option - Active */}
-          <div 
-            className="flex flex-col items-center p-6 bg-orange-50 rounded-lg cursor-pointer hover:bg-orange-100 transition-colors border-2 border-orange-200 hover:border-orange-300"
-            onClick={() => onSelectRole('consumer')}
-          >
+                     <div 
+             className="flex flex-col items-center p-6 bg-orange-50 rounded-lg cursor-pointer hover:bg-orange-100 transition-colors border-2 border-orange-200 hover:border-orange-300"
+             onClick={handleConsumerSelection}
+           >
             <div className="w-20 h-20 sm:w-24 sm:h-24 bg-orange-500 rounded-full flex items-center justify-center mb-4 shadow-lg">
               <Utensils size={40} className="text-white" />
             </div>
@@ -67,8 +74,15 @@ export const RoleSelection = ({ onSelectRole }: RoleSelectionProps) => {
           <p className="text-xs text-gray-500 max-w-sm">
             Выберите "Я ЕМ" для доступа к карточке клиента и заказу блюд от лучших шефов
           </p>
-        </div>
-      </div>
-    </div>
-  );
-}; 
+                 </div>
+       </div>
+
+       {/* User Profile Modal */}
+       {showUserProfile && (
+         <UserProfile
+           onClose={() => setShowUserProfile(false)}
+         />
+       )}
+     </div>
+   );
+ }; 
