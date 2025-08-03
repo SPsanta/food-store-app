@@ -226,25 +226,25 @@ export const MainScreen = ({
                   <div className="absolute bottom-2 left-2 bg-orange-500 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-bold">
                     ₽{product.price}
                   </div>
-                  {/* Chef Image */}
-                  <div className="absolute top-3 right-3">
-                    <div className="relative">
-                      <img 
-                        src={product.chefImage} 
-                        alt={product.chefName}
-                        className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-4 border-white shadow-[0_0_10px_rgba(255,255,255,0.8)] object-cover cursor-pointer hover:scale-110 transition-transform"
-                        onClick={() => {
-                          const chef = chefs.find(c => c.name === product.chefName);
-                          if (chef) setSelectedChef(chef);
-                        }}
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.style.display = 'none';
-                        }}
-                      />
-                      <div className="absolute -bottom-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 bg-green-500 rounded-full border-2 border-white shadow-[0_0_5px_rgba(255,255,255,0.6)]"></div>
-                    </div>
-                  </div>
+                                     {/* Chef Image */}
+                   <div className="absolute -top-2 -right-2">
+                     <div className="relative">
+                                               <img 
+                          src={product.chefImage} 
+                          alt={product.chefName}
+                          className="w-15 h-15 sm:w-20 sm:h-20 rounded-full border-4 border-white shadow-[0_0_10px_rgba(255,255,255,0.8)] object-cover cursor-pointer hover:scale-110 transition-transform"
+                         onClick={() => {
+                           const chef = chefs.find(c => c.name === product.chefName);
+                           if (chef) setSelectedChef(chef);
+                         }}
+                         onError={(e) => {
+                           const target = e.target as HTMLImageElement;
+                           target.style.display = 'none';
+                         }}
+                       />
+                                               <div className="absolute -bottom-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 bg-green-500 rounded-full border-2 border-white shadow-[0_0_5px_rgba(255,255,255,0.6)]"></div>
+                     </div>
+                   </div>
                 </div>
                 <div className="mt-2">
                   <p className="text-xs sm:text-sm text-gray-600 leading-tight">
