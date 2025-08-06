@@ -79,6 +79,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }
               value={frequency}
               onChange={(e) => setFrequency(Number(e.target.value))}
               className="w-full h-3 bg-gradient-to-r from-orange-200 to-orange-500 rounded-lg appearance-none cursor-pointer"
+              aria-label="Частота заказов"
             />
             <div className="flex justify-between mt-4 text-sm text-gray-600">
               <span>Редко</span>
@@ -114,6 +115,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }
                   value={budget[0]}
                   onChange={(e) => setBudget([Number(e.target.value), budget[1]])}
                   className="flex-1 h-3 bg-gradient-to-r from-orange-200 to-orange-500 rounded-lg appearance-none cursor-pointer"
+                  aria-label="Минимальный бюджет"
                 />
                 <input
                   type="range"
@@ -122,6 +124,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }
                   value={budget[1]}
                   onChange={(e) => setBudget([budget[0], Number(e.target.value)])}
                   className="flex-1 h-3 bg-gradient-to-r from-orange-200 to-orange-500 rounded-lg appearance-none cursor-pointer"
+                  aria-label="Максимальный бюджет"
                 />
               </div>
             </div>

@@ -86,6 +86,7 @@ export const MenuScreen: React.FC<MenuScreenProps> = ({ onBack, onShowChef }) =>
         <button 
           onClick={onBack}
           className="p-2 rounded-full bg-orange-100 hover:bg-orange-200 transition-colors mr-4"
+          aria-label="Назад"
         >
           <ArrowLeft size={24} className="text-orange-600" />
         </button>
