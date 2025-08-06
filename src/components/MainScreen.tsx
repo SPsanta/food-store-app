@@ -2,6 +2,16 @@ import React, { useState } from 'react';
 import { Search, Menu, X } from 'lucide-react';
 import { ChefCard } from './ChefCard';
 import { Dish, Chef } from '../types';
+import { 
+  JapaneseCuisine, 
+  ChineseCuisine, 
+  ItalianCuisine, 
+  MexicanCuisine, 
+  AmericanCuisine, 
+  IndianCuisine, 
+  RussianCuisine, 
+  HealthyCuisine 
+} from './cuisines';
 
 interface MainScreenProps {
   onAddToCart: (dish: Dish) => void;
@@ -21,6 +31,7 @@ export const MainScreen = ({
   const [selectedCuisines, setSelectedCuisines] = useState<string[]>([]);
   const [showBudgetPage, setShowBudgetPage] = useState(false);
   const [budget, setBudget] = useState<[number, number]>([500, 2000]);
+  const [showCuisinePage, setShowCuisinePage] = useState<string | null>(null);
 
   const cuisines = [
     { emoji: '🍣', name: 'Японская', value: 'japanese' },
@@ -39,6 +50,21 @@ export const MainScreen = ({
         ? prev.filter(c => c !== cuisine)
         : [...prev, cuisine]
     );
+  };
+
+  const handleStartCooking = () => {
+    if (selectedCuisines.length === 1) {
+      setShowCuisinePage(selectedCuisines[0]);
+    } else {
+      // Если выбрано несколько кухонь, показываем первую
+      setShowCuisinePage(selectedCuisines[0]);
+    }
+    setShowBudgetPage(false);
+    setIsCuisineMenuOpen(false);
+  };
+
+  const handleBackFromCuisine = () => {
+    setShowCuisinePage(null);
   };
 
   // Моковые данные продуктов
@@ -177,6 +203,38 @@ export const MainScreen = ({
     return matchesCategory && matchesSearch;
   });
 
+    // Если открыта страница кухни, показываем только её
+  if (showCuisinePage) {
+    return (
+      <>
+        {showCuisinePage === 'japanese' && (
+          <JapaneseCuisine onBack={handleBackFromCuisine} />
+        )}
+        {showCuisinePage === 'chinese' && (
+          <ChineseCuisine onBack={handleBackFromCuisine} />
+        )}
+        {showCuisinePage === 'italian' && (
+          <ItalianCuisine onBack={handleBackFromCuisine} />
+        )}
+        {showCuisinePage === 'mexican' && (
+          <MexicanCuisine onBack={handleBackFromCuisine} />
+        )}
+        {showCuisinePage === 'american' && (
+          <AmericanCuisine onBack={handleBackFromCuisine} />
+        )}
+        {showCuisinePage === 'indian' && (
+          <IndianCuisine onBack={handleBackFromCuisine} />
+        )}
+        {showCuisinePage === 'russian' && (
+          <RussianCuisine onBack={handleBackFromCuisine} />
+        )}
+        {showCuisinePage === 'healthy' && (
+          <HealthyCuisine onBack={handleBackFromCuisine} />
+        )}
+      </>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-white">
       
@@ -185,19 +243,20 @@ export const MainScreen = ({
          <div className="fixed top-4 left-4 z-50">
            <button
              onClick={() => {
-               // Сброс состояний при открытии меню
-               setSelectedCuisines([]);
-               setShowBudgetPage(false);
-               setBudget([500, 2000]);
-               setIsCuisineMenuOpen(true);
-             }}
-             className="w-10 h-10 bg-black rounded-full flex items-center justify-center shadow-lg"
-             aria-label="Открыть меню кухонь"
-           >
-             <Menu size={20} className="text-white" />
-           </button>
-         </div>
-       )}
+                               // Сброс состояний при открытии меню
+                setSelectedCuisines([]);
+                setShowBudgetPage(false);
+                setBudget([500, 2000]);
+                setShowCuisinePage(null);
+                setIsCuisineMenuOpen(true);
+              }}
+              className="w-10 h-10 bg-black rounded-full flex items-center justify-center shadow-lg"
+              aria-label="Открыть меню кухонь"
+            >
+              <Menu size={20} className="text-white" />
+            </button>
+          </div>
+        )}
 
       {/* Cuisine Selection Overlay */}
       {isCuisineMenuOpen && !showBudgetPage && (
@@ -346,18 +405,15 @@ export const MainScreen = ({
                   </div>
                 </div>
                 
-                <button
-                  onClick={() => {
-                    setShowBudgetPage(false);
-                    setIsCuisineMenuOpen(false);
-                  }}
-                  className="w-full bg-orange-500 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center space-x-2 transition-all duration-300 transform hover:scale-105 hover:bg-orange-600 shadow-lg"
-                >
-                  <span>Начать готовить!</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
+                                 <button
+                   onClick={handleStartCooking}
+                   className="w-full bg-orange-500 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center space-x-2 transition-all duration-300 transform hover:scale-105 hover:bg-orange-600 shadow-lg"
+                 >
+                   <span>Начать готовить!</span>
+                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                   </svg>
+                 </button>
               </div>
             </div>
           </div>
@@ -510,15 +566,14 @@ export const MainScreen = ({
        
 
              {/* Chef Card Modal */}
-       {selectedChef && (
-         <ChefCard
-           chef={selectedChef}
-           onClose={() => setSelectedChef(null)}
-           onAddToCart={onAddToCart}
-         />
-       )}
+                       {selectedChef && (
+          <ChefCard
+            chef={selectedChef}
+            onClose={() => setSelectedChef(null)}
+            onAddToCart={onAddToCart}
+          />
+        )}
 
-
-    </div>
-  );
+               </div>
+     );
 };
