@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { ArrowLeft, Star, Clock, Info, ChefHat } from 'lucide-react';
+import { ChefPresentationCard } from '../ChefPresentationCard';
 
 interface JapaneseCuisineProps {
   onBack: () => void;
@@ -25,6 +26,8 @@ interface Dish {
 export const JapaneseCuisine: React.FC<JapaneseCuisineProps> = ({ onBack }) => {
   const [currentDishIndex, setCurrentDishIndex] = useState(0);
   const [swipeDirection, setSwipeDirection] = useState<'left' | 'right' | null>(null);
+  const [showChefCard, setShowChefCard] = useState(false);
+  const [selectedChef, setSelectedChef] = useState<any>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const japaneseDishes: Dish[] = [
@@ -208,7 +211,15 @@ export const JapaneseCuisine: React.FC<JapaneseCuisineProps> = ({ onBack }) => {
   };
 
   const handleShowChef = (chef: any) => {
-    console.log('Показать шефа:', chef);
+    setSelectedChef({
+      ...chef,
+      experience: '15+ лет',
+      location: 'Токио, Япония',
+      bio: 'Мастер японской кухни с глубоким пониманием традиционных техник. Специализируется на суши, рамене и темпуре. Изучал кулинарное искусство в Токио и получил сертификаты от лучших мастеров Японии.',
+      awards: ['Мастер суши 2023', 'Золотой нож 2022', 'Лучший рамен 2021'],
+      dishes: ['Суши', 'Рамен', 'Темпура', 'Якитори', 'Окономияки', 'Мисо суп']
+    });
+    setShowChefCard(true);
   };
 
   const currentDish = japaneseDishes[currentDishIndex];
@@ -339,6 +350,7 @@ export const JapaneseCuisine: React.FC<JapaneseCuisineProps> = ({ onBack }) => {
                   <button
                     onClick={handleShowDetails}
                     className="bg-white/20 backdrop-blur-sm rounded-full p-2 hover:bg-white/30 transition-colors"
+                    aria-label="Подробности о блюде"
                   >
                     <Info size={20} className="text-white" />
                   </button>
@@ -391,6 +403,17 @@ export const JapaneseCuisine: React.FC<JapaneseCuisineProps> = ({ onBack }) => {
           </button>
         </div>
       </div>
+
+      {/* Chef Presentation Card */}
+      {showChefCard && selectedChef && (
+        <ChefPresentationCard
+          chef={selectedChef}
+          onClose={() => {
+            setShowChefCard(false);
+            setSelectedChef(null);
+          }}
+        />
+      )}
     </div>
   );
 }; 

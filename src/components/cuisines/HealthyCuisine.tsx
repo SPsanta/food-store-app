@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { ArrowLeft, Star, Clock, Info, ChefHat } from 'lucide-react';
+import { ChefPresentationCard } from '../ChefPresentationCard';
 
 interface HealthyCuisineProps {
   onBack: () => void;
@@ -25,6 +26,8 @@ interface Dish {
 export const HealthyCuisine: React.FC<HealthyCuisineProps> = ({ onBack }) => {
   const [currentDishIndex, setCurrentDishIndex] = useState(0);
   const [swipeDirection, setSwipeDirection] = useState<'left' | 'right' | null>(null);
+  const [showChefCard, setShowChefCard] = useState(false);
+  const [selectedChef, setSelectedChef] = useState<any>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const healthyDishes: Dish[] = [
@@ -208,7 +211,15 @@ export const HealthyCuisine: React.FC<HealthyCuisineProps> = ({ onBack }) => {
   };
 
   const handleShowChef = (chef: any) => {
-    console.log('Показать шефа:', chef);
+    setSelectedChef({
+      ...chef,
+      experience: '10+ лет',
+      location: 'Калифорния, США',
+      bio: 'Мастер здоровой кухни с глубоким пониманием диетологии. Специализируется на веганских, безглютеновых и низкокалорийных блюдах. Изучал нутрициологию и получил множество наград.',
+      awards: ['Мастер здорового питания 2023', 'Золотая тарелка 2022', 'Лучший веган 2021'],
+      dishes: ['Салаты', 'Смузи', 'Боулы', 'Веганские блюда', 'Безглютеновые']
+    });
+    setShowChefCard(true);
   };
 
   const currentDish = healthyDishes[currentDishIndex];
@@ -392,6 +403,17 @@ export const HealthyCuisine: React.FC<HealthyCuisineProps> = ({ onBack }) => {
           </button>
         </div>
       </div>
+
+      {/* Chef Presentation Card */}
+      {showChefCard && selectedChef && (
+        <ChefPresentationCard
+          chef={selectedChef}
+          onClose={() => {
+            setShowChefCard(false);
+            setSelectedChef(null);
+          }}
+        />
+      )}
     </div>
   );
 }; 

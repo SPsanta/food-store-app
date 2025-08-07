@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { ArrowLeft, Star, Clock, Info, ChefHat } from 'lucide-react';
+import { ChefPresentationCard } from '../ChefPresentationCard';
 
 interface RussianCuisineProps {
   onBack: () => void;
@@ -25,6 +26,8 @@ interface Dish {
 export const RussianCuisine: React.FC<RussianCuisineProps> = ({ onBack }) => {
   const [currentDishIndex, setCurrentDishIndex] = useState(0);
   const [swipeDirection, setSwipeDirection] = useState<'left' | 'right' | null>(null);
+  const [showChefCard, setShowChefCard] = useState(false);
+  const [selectedChef, setSelectedChef] = useState<any>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const russianDishes: Dish[] = [
@@ -208,7 +211,15 @@ export const RussianCuisine: React.FC<RussianCuisineProps> = ({ onBack }) => {
   };
 
   const handleShowChef = (chef: any) => {
-    console.log('Показать шефа:', chef);
+    setSelectedChef({
+      ...chef,
+      experience: '22+ лет',
+      location: 'Москва, Россия',
+      bio: 'Мастер русской кухни с глубоким пониманием традиционных рецептов. Специализируется на борще, пельменях и блинах. Изучал кулинарное искусство в России и получил множество наград.',
+      awards: ['Мастер борща 2023', 'Золотой пельмень 2022', 'Лучшие блины 2021'],
+      dishes: ['Борщ', 'Пельмени', 'Блины', 'Солянка', 'Гречка']
+    });
+    setShowChefCard(true);
   };
 
   const currentDish = russianDishes[currentDishIndex];
@@ -392,6 +403,17 @@ export const RussianCuisine: React.FC<RussianCuisineProps> = ({ onBack }) => {
           </button>
         </div>
       </div>
+
+      {/* Chef Presentation Card */}
+      {showChefCard && selectedChef && (
+        <ChefPresentationCard
+          chef={selectedChef}
+          onClose={() => {
+            setShowChefCard(false);
+            setSelectedChef(null);
+          }}
+        />
+      )}
     </div>
   );
 }; 

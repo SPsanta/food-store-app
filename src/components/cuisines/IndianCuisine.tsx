@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { ArrowLeft, Star, Clock, Info, ChefHat } from 'lucide-react';
+import { ChefPresentationCard } from '../ChefPresentationCard';
 
 interface IndianCuisineProps {
   onBack: () => void;
@@ -25,6 +26,8 @@ interface Dish {
 export const IndianCuisine: React.FC<IndianCuisineProps> = ({ onBack }) => {
   const [currentDishIndex, setCurrentDishIndex] = useState(0);
   const [swipeDirection, setSwipeDirection] = useState<'left' | 'right' | null>(null);
+  const [showChefCard, setShowChefCard] = useState(false);
+  const [selectedChef, setSelectedChef] = useState<any>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const indianDishes: Dish[] = [
@@ -208,7 +211,15 @@ export const IndianCuisine: React.FC<IndianCuisineProps> = ({ onBack }) => {
   };
 
   const handleShowChef = (chef: any) => {
-    console.log('Показать шефа:', chef);
+    setSelectedChef({
+      ...chef,
+      experience: '20+ лет',
+      location: 'Мумбаи, Индия',
+      bio: 'Мастер индийской кухни с глубоким пониманием традиционных рецептов. Специализируется на карри, наане и бирьяни. Изучал кулинарное искусство в Индии и получил множество наград.',
+      awards: ['Мастер карри 2023', 'Золотой наан 2022', 'Лучший бирьяни 2021'],
+      dishes: ['Карри', 'Наан', 'Бирьяни', 'Тандури', 'Самоса']
+    });
+    setShowChefCard(true);
   };
 
   const currentDish = indianDishes[currentDishIndex];
@@ -392,6 +403,17 @@ export const IndianCuisine: React.FC<IndianCuisineProps> = ({ onBack }) => {
           </button>
         </div>
       </div>
+
+      {/* Chef Presentation Card */}
+      {showChefCard && selectedChef && (
+        <ChefPresentationCard
+          chef={selectedChef}
+          onClose={() => {
+            setShowChefCard(false);
+            setSelectedChef(null);
+          }}
+        />
+      )}
     </div>
   );
 }; 

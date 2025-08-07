@@ -129,6 +129,7 @@ export const DishCard = forwardRef<HTMLDivElement, DishCardProps>(
                 <button
                   onClick={onShowDetails}
                   className="bg-white/20 backdrop-blur-sm rounded-full p-2 hover:bg-white/30 transition-colors"
+                  aria-label="Подробности о блюде"
                 >
                   <Info size={20} className="text-white" />
                 </button>

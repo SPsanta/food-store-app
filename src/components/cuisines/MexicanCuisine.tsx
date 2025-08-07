@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { ArrowLeft, Star, Clock, Info, ChefHat } from 'lucide-react';
+import { ChefPresentationCard } from '../ChefPresentationCard';
 
 interface MexicanCuisineProps {
   onBack: () => void;
@@ -25,6 +26,8 @@ interface Dish {
 export const MexicanCuisine: React.FC<MexicanCuisineProps> = ({ onBack }) => {
   const [currentDishIndex, setCurrentDishIndex] = useState(0);
   const [swipeDirection, setSwipeDirection] = useState<'left' | 'right' | null>(null);
+  const [showChefCard, setShowChefCard] = useState(false);
+  const [selectedChef, setSelectedChef] = useState<any>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const mexicanDishes: Dish[] = [
@@ -208,7 +211,15 @@ export const MexicanCuisine: React.FC<MexicanCuisineProps> = ({ onBack }) => {
   };
 
   const handleShowChef = (chef: any) => {
-    console.log('Показать шефа:', chef);
+    setSelectedChef({
+      ...chef,
+      experience: '14+ лет',
+      location: 'Мехико, Мексика',
+      bio: 'Мастер мексиканской кухни с глубоким пониманием традиционных рецептов. Специализируется на тако, энчиладас и гуакамоле. Изучал кулинарное искусство в Мехико и получил множество наград.',
+      awards: ['Мастер тако 2023', 'Золотая сальса 2022', 'Лучший гуакамоле 2021'],
+      dishes: ['Тако', 'Энчиладас', 'Гуакамоле', 'Кесадилья', 'Чили кон карне']
+    });
+    setShowChefCard(true);
   };
 
   const currentDish = mexicanDishes[currentDishIndex];
@@ -392,6 +403,17 @@ export const MexicanCuisine: React.FC<MexicanCuisineProps> = ({ onBack }) => {
           </button>
         </div>
       </div>
+
+      {/* Chef Presentation Card */}
+      {showChefCard && selectedChef && (
+        <ChefPresentationCard
+          chef={selectedChef}
+          onClose={() => {
+            setShowChefCard(false);
+            setSelectedChef(null);
+          }}
+        />
+      )}
     </div>
   );
 }; 

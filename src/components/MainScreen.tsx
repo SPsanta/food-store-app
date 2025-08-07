@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Search, Menu, X } from 'lucide-react';
-import { ChefCard } from './ChefCard';
+import { ChefPresentationCard } from './ChefPresentationCard';
 import { Dish, Chef } from '../types';
 import { 
   JapaneseCuisine, 
@@ -133,7 +133,9 @@ export const MainScreen = ({
       id: '1',
       name: 'Шеф Александр',
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
       specialty: 'Морепродукты',
+      speciality: 'Морепродукты',
       rating: 4.9,
       experience: '15 лет',
       location: 'Москва',
@@ -144,7 +146,9 @@ export const MainScreen = ({
       id: '2',
       name: 'Шеф Мария',
       image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
+      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
       specialty: 'Итальянская кухня',
+      speciality: 'Итальянская кухня',
       rating: 4.8,
       experience: '12 лет',
       location: 'Санкт-Петербург',
@@ -155,7 +159,9 @@ export const MainScreen = ({
       id: '3',
       name: 'Шеф Дмитрий',
       image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
+      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
       specialty: 'Рыба и морепродукты',
+      speciality: 'Рыба и морепродукты',
       rating: 4.7,
       experience: '10 лет',
       location: 'Сочи',
@@ -166,7 +172,9 @@ export const MainScreen = ({
       id: '4',
       name: 'Шеф Анна',
       image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
+      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
       specialty: 'Мясные блюда',
+      speciality: 'Мясные блюда',
       rating: 4.9,
       experience: '18 лет',
       location: 'Казань',
@@ -177,7 +185,9 @@ export const MainScreen = ({
       id: '5',
       name: 'Шеф Марко',
       image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face',
       specialty: 'Итальянская кухня',
+      speciality: 'Итальянская кухня',
       rating: 4.8,
       experience: '14 лет',
       location: 'Ростов-на-Дону',
@@ -188,7 +198,9 @@ export const MainScreen = ({
       id: '6',
       name: 'Шеф Елена',
       image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face',
+      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face',
       specialty: 'Здоровое питание',
+      speciality: 'Здоровое питание',
       rating: 4.6,
       experience: '8 лет',
       location: 'Новосибирск',
@@ -565,12 +577,11 @@ export const MainScreen = ({
 
        
 
-             {/* Chef Card Modal */}
+             {/* Chef Presentation Card Modal */}
                        {selectedChef && (
-          <ChefCard
+          <ChefPresentationCard
             chef={selectedChef}
             onClose={() => setSelectedChef(null)}
-            onAddToCart={onAddToCart}
           />
         )}
 

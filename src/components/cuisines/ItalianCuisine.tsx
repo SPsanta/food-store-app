@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { ArrowLeft, Star, Clock, Info, ChefHat } from 'lucide-react';
+import { ChefPresentationCard } from '../ChefPresentationCard';
 
 interface ItalianCuisineProps {
   onBack: () => void;
@@ -25,6 +26,8 @@ interface Dish {
 export const ItalianCuisine: React.FC<ItalianCuisineProps> = ({ onBack }) => {
   const [currentDishIndex, setCurrentDishIndex] = useState(0);
   const [swipeDirection, setSwipeDirection] = useState<'left' | 'right' | null>(null);
+  const [showChefCard, setShowChefCard] = useState(false);
+  const [selectedChef, setSelectedChef] = useState<any>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const italianDishes: Dish[] = [
@@ -211,8 +214,15 @@ export const ItalianCuisine: React.FC<ItalianCuisineProps> = ({ onBack }) => {
   };
 
   const handleShowChef = (chef: any) => {
-    // Показать профиль шефа
-    console.log('Показать шефа:', chef);
+    setSelectedChef({
+      ...chef,
+      experience: '12+ лет',
+      location: 'Рим, Италия',
+      bio: 'Мастер итальянской кухни с глубоким пониманием традиционных рецептов. Специализируется на пасте, пицце и ризотто. Работал в лучших ресторанах Италии и получил множество наград за свои кулинарные шедевры.',
+      awards: ['Лучший шеф Италии 2023', 'Золотая вилка 2022', 'Мастер пасты 2021'],
+      dishes: ['Паста', 'Пицца', 'Ризотто', 'Лазанья', 'Оссобуко', 'Тирамису']
+    });
+    setShowChefCard(true);
   };
 
   const currentDish = italianDishes[currentDishIndex];
@@ -343,6 +353,7 @@ export const ItalianCuisine: React.FC<ItalianCuisineProps> = ({ onBack }) => {
                   <button
                     onClick={handleShowDetails}
                     className="bg-white/20 backdrop-blur-sm rounded-full p-2 hover:bg-white/30 transition-colors"
+                    aria-label="Подробности о блюде"
                   >
                     <Info size={20} className="text-white" />
                   </button>
@@ -395,6 +406,17 @@ export const ItalianCuisine: React.FC<ItalianCuisineProps> = ({ onBack }) => {
            </button>
          </div>
       </div>
+
+      {/* Chef Presentation Card */}
+      {showChefCard && selectedChef && (
+        <ChefPresentationCard
+          chef={selectedChef}
+          onClose={() => {
+            setShowChefCard(false);
+            setSelectedChef(null);
+          }}
+        />
+      )}
     </div>
   );
 }; 

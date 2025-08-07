@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { ArrowLeft, Star, Clock, Info, ChefHat } from 'lucide-react';
+import { ChefPresentationCard } from '../ChefPresentationCard';
 
 interface AmericanCuisineProps {
   onBack: () => void;
@@ -25,6 +26,8 @@ interface Dish {
 export const AmericanCuisine: React.FC<AmericanCuisineProps> = ({ onBack }) => {
   const [currentDishIndex, setCurrentDishIndex] = useState(0);
   const [swipeDirection, setSwipeDirection] = useState<'left' | 'right' | null>(null);
+  const [showChefCard, setShowChefCard] = useState(false);
+  const [selectedChef, setSelectedChef] = useState<any>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const americanDishes: Dish[] = [
@@ -208,7 +211,15 @@ export const AmericanCuisine: React.FC<AmericanCuisineProps> = ({ onBack }) => {
   };
 
   const handleShowChef = (chef: any) => {
-    console.log('Показать шефа:', chef);
+    setSelectedChef({
+      ...chef,
+      experience: '16+ лет',
+      location: 'Нью-Йорк, США',
+      bio: 'Мастер американской кухни с глубоким пониманием традиционных рецептов. Специализируется на бургерах, стейках и барбекю. Работал в лучших ресторанах США и получил множество наград.',
+      awards: ['Мастер бургеров 2023', 'Золотой гриль 2022', 'Лучший стейк 2021'],
+      dishes: ['Бургеры', 'Стейки', 'Барбекю', 'Хот-доги', 'Чизкейк']
+    });
+    setShowChefCard(true);
   };
 
   const currentDish = americanDishes[currentDishIndex];
@@ -392,6 +403,17 @@ export const AmericanCuisine: React.FC<AmericanCuisineProps> = ({ onBack }) => {
           </button>
         </div>
       </div>
+
+      {/* Chef Presentation Card */}
+      {showChefCard && selectedChef && (
+        <ChefPresentationCard
+          chef={selectedChef}
+          onClose={() => {
+            setShowChefCard(false);
+            setSelectedChef(null);
+          }}
+        />
+      )}
     </div>
   );
 }; 

@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { ArrowLeft, Star, Clock, Info, ChefHat } from 'lucide-react';
+import { ChefPresentationCard } from '../ChefPresentationCard';
 
 interface ChineseCuisineProps {
   onBack: () => void;
@@ -25,6 +26,8 @@ interface Dish {
 export const ChineseCuisine: React.FC<ChineseCuisineProps> = ({ onBack }) => {
   const [currentDishIndex, setCurrentDishIndex] = useState(0);
   const [swipeDirection, setSwipeDirection] = useState<'left' | 'right' | null>(null);
+  const [showChefCard, setShowChefCard] = useState(false);
+  const [selectedChef, setSelectedChef] = useState<any>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const chineseDishes: Dish[] = [
@@ -208,7 +211,15 @@ export const ChineseCuisine: React.FC<ChineseCuisineProps> = ({ onBack }) => {
   };
 
   const handleShowChef = (chef: any) => {
-    console.log('Показать шефа:', chef);
+    setSelectedChef({
+      ...chef,
+      experience: '18+ лет',
+      location: 'Пекин, Китай',
+      bio: 'Мастер китайской кухни с глубоким пониманием традиционных рецептов. Специализируется на утке по-пекински, кунг пао и димао. Изучал кулинарное искусство в Пекине и получил множество наград.',
+      awards: ['Мастер утки 2023', 'Золотой вок 2022', 'Лучший кунг пао 2021'],
+      dishes: ['Утка по-пекински', 'Кунг Пао', 'Димао', 'Мапо Тофу', 'Сладко-кислая свинина']
+    });
+    setShowChefCard(true);
   };
 
   const currentDish = chineseDishes[currentDishIndex];
@@ -392,6 +403,17 @@ export const ChineseCuisine: React.FC<ChineseCuisineProps> = ({ onBack }) => {
           </button>
         </div>
       </div>
+
+      {/* Chef Presentation Card */}
+      {showChefCard && selectedChef && (
+        <ChefPresentationCard
+          chef={selectedChef}
+          onClose={() => {
+            setShowChefCard(false);
+            setSelectedChef(null);
+          }}
+        />
+      )}
     </div>
   );
 }; 
