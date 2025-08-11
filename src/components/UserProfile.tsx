@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, MapPin, Heart, Settings, Gift, Clock, Plus, Edit } from 'lucide-react';
+import { User, MapPin, Heart, Settings, Gift, Clock, Plus, Edit, AlertTriangle } from 'lucide-react';
 import { RegistrationModal } from './RegistrationModal';
 
 interface UserProfileProps {
@@ -16,7 +16,8 @@ export const UserProfile = ({ onClose }: UserProfileProps) => {
     phone: '',
     address: 'Не указан',
     points: 0,
-    orders: []
+    orders: [],
+    allergies: [] as string[]
   });
 
   const menuItems = [
@@ -61,7 +62,14 @@ export const UserProfile = ({ onClose }: UserProfileProps) => {
       icon: <Gift size={20} className="text-purple-500" />,
       description: 'Ваши баллы и доступные бонусы',
       action: () => console.log('Бонусы')
-    }
+    },
+    ...(isRegistered && userData.allergies.length > 0 ? [{
+      id: 'allergies',
+      title: 'Аллергии и ограничения',
+      icon: <AlertTriangle size={20} className="text-red-500" />,
+      description: `У вас ${userData.allergies.length} ограничений`,
+      action: () => console.log('Аллергии')
+    }] : [])
   ];
 
   return (
@@ -155,7 +163,8 @@ export const UserProfile = ({ onClose }: UserProfileProps) => {
                firstName: userData.firstName,
                lastName: userData.lastName,
                phone: userData.phone,
-               name: `${userData.firstName} ${userData.lastName}`
+               name: `${userData.firstName} ${userData.lastName}`,
+               allergies: userData.allergies
              }));
              setIsRegistered(true);
              setShowRegistration(false);

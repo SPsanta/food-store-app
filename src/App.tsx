@@ -49,6 +49,7 @@ function App() {
         return (
           <RoleSelection
             onSelectRole={handleRoleSelection}
+            onClose={() => setCurrentScreen('main')}
           />
         );
       case 'main':

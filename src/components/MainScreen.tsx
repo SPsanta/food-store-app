@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Search, Menu, X, Star, Clock, Info, ChefHat } from 'lucide-react';
 import { ChefPresentationCard } from './ChefPresentationCard';
-import { AllergyScreen } from './AllergyScreen';
 import { Dish, Chef } from '../types';
 import { 
   JapaneseCuisine, 
@@ -30,11 +29,9 @@ export const MainScreen = ({
   const [selectedChef, setSelectedChef] = useState<Chef | null>(null);
   const [isCuisineMenuOpen, setIsCuisineMenuOpen] = useState(false);
   const [selectedCuisines, setSelectedCuisines] = useState<string[]>([]);
-  const [showAllergyPage, setShowAllergyPage] = useState(false);
   const [showBudgetPage, setShowBudgetPage] = useState(false);
   const [budget, setBudget] = useState<[number, number]>([500, 2000]);
   const [showCuisinePage, setShowCuisinePage] = useState<string | null>(null);
-  const [selectedAllergies, setSelectedAllergies] = useState<string[]>([]);
 
   const cuisines = [
     { emoji: '🍣', name: 'Японская', value: 'japanese' },
@@ -63,14 +60,7 @@ export const MainScreen = ({
       setShowCuisinePage(selectedCuisines[0]);
     }
     setShowBudgetPage(false);
-    setShowAllergyPage(false);
     setIsCuisineMenuOpen(false);
-  };
-
-  const handleAllergiesNext = (allergies: string[]) => {
-    setSelectedAllergies(allergies);
-    setShowAllergyPage(false);
-    setShowBudgetPage(true);
   };
 
   const handleBackFromCuisine = () => {
@@ -252,7 +242,7 @@ export const MainScreen = ({
   });
 
     // Если открыта страница кухни, показываем только её
-  if (showCuisinePage && !showAllergyPage && !showBudgetPage) {
+  if (showCuisinePage && !showBudgetPage) {
     return (
       <>
         {showCuisinePage === 'japanese' && (
@@ -287,17 +277,15 @@ export const MainScreen = ({
     <div className="min-h-screen bg-white">
       
              {/* Menu Button */}
-       {!isCuisineMenuOpen && !showAllergyPage && !showBudgetPage && (
+       {!isCuisineMenuOpen && !showBudgetPage && (
          <div className="fixed top-4 left-4 z-50">
            <button
              onClick={() => {
                                // Сброс состояний при открытии меню
                 setSelectedCuisines([]);
-                setShowAllergyPage(false);
                 setShowBudgetPage(false);
                 setBudget([500, 2000]);
                 setShowCuisinePage(null);
-                setSelectedAllergies([]);
                 setIsCuisineMenuOpen(true);
               }}
               className="w-10 h-10 bg-black rounded-full flex items-center justify-center shadow-lg"
@@ -309,7 +297,7 @@ export const MainScreen = ({
         )}
 
       {/* Cuisine Selection Overlay */}
-      {isCuisineMenuOpen && !showAllergyPage && !showBudgetPage && (
+      {isCuisineMenuOpen && !showBudgetPage && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-40" onClick={() => setIsCuisineMenuOpen(false)}>
           <div className="fixed top-0 left-0 h-full w-80 bg-white shadow-xl z-50" onClick={(e) => e.stopPropagation()}>
             <div className="p-6">
@@ -360,7 +348,7 @@ export const MainScreen = ({
                       })}
                     </div>
                     <button
-                      onClick={() => setShowAllergyPage(true)}
+                      onClick={() => setShowBudgetPage(true)}
                       className="w-full bg-orange-500 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center space-x-2 transition-all duration-300 transform hover:scale-105 hover:bg-orange-600 shadow-lg"
                     >
                       <span>Далее</span>
@@ -376,16 +364,10 @@ export const MainScreen = ({
         </div>
       )}
 
-      {/* Allergy Selection Overlay */}
-      {showAllergyPage && (
-        <AllergyScreen
-          onBack={() => setShowAllergyPage(false)}
-          onNext={handleAllergiesNext}
-        />
-      )}
+
 
              {/* Budget Selection Overlay */}
-       {showBudgetPage && !showAllergyPage && (
+       {showBudgetPage && (
          <div className="fixed inset-0 bg-black bg-opacity-50 z-40">
            <div className="fixed top-0 left-0 h-full w-80 bg-white shadow-xl z-50">
              <div className="p-6 pt-16">

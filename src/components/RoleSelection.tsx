@@ -4,9 +4,10 @@ import { UserProfile } from './UserProfile';
 
 interface RoleSelectionProps {
   onSelectRole: (role: 'chef' | 'consumer') => void;
+  onClose: () => void;
 }
 
-export const RoleSelection = ({ onSelectRole }: RoleSelectionProps) => {
+export const RoleSelection = ({ onSelectRole, onClose }: RoleSelectionProps) => {
   const [showUserProfile, setShowUserProfile] = useState(false);
 
   const handleConsumerSelection = () => {
@@ -77,7 +78,10 @@ export const RoleSelection = ({ onSelectRole }: RoleSelectionProps) => {
        {/* User Profile Modal */}
        {showUserProfile && (
          <UserProfile
-           onClose={() => setShowUserProfile(false)}
+           onClose={() => {
+             setShowUserProfile(false);
+             onClose();
+           }}
          />
        )}
      </div>
