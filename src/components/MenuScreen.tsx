@@ -16,18 +16,52 @@ export const MenuScreen: React.FC<MenuScreenProps> = ({ onBack, onShowChef }) =>
       color: 'orange',
       dishes: [
         {
-          id: '1',
-          name: 'Паста с трюфелем',
-          image: 'https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg',
-          price: 1200,
-          chef: 'Марко Росси'
+          id: 1,
+          name: 'Стейк Рибай',
+          description: 'Сочный стейк из мраморной говядины',
+          price: 2500,
+          image: '', // Убрал изображение
+          chef: 'Шеф Александр'
         },
         {
-          id: '2',
-          name: 'Ризотто с грибами',
-          image: 'https://images.pexels.com/photos/1234567/pexels-photo-1234567.jpeg',
-          price: 950,
-          chef: 'Джулия Бертолини'
+          id: 2,
+          name: 'Лосось на гриле',
+          description: 'Филе лосося с овощами',
+          price: 1800,
+          image: '', // Убрал изображение
+          chef: 'Шеф Мария'
+        },
+        {
+          id: 3,
+          name: 'Паста Карбонара',
+          description: 'Классическая итальянская паста',
+          price: 1200,
+          image: '', // Убрал изображение
+          chef: 'Шеф Дмитрий'
+        },
+        {
+          id: 4,
+          name: 'Утка по-пекински',
+          description: 'Традиционное китайское блюдо',
+          price: 2200,
+          image: '', // Убрал изображение
+          chef: 'Шеф Анна'
+        },
+        {
+          id: 5,
+          name: 'Суп Том Ям',
+          description: 'Острый тайский суп',
+          price: 900,
+          image: '', // Убрал изображение
+          chef: 'Шеф Марко'
+        },
+        {
+          id: 6,
+          name: 'Бургер с трюфелем',
+          description: 'Премиум бургер с трюфельным соусом',
+          price: 1600,
+          image: '', // Убрал изображение
+          chef: 'Шеф Елена'
         }
       ]
     },

@@ -70,58 +70,124 @@ export const MainScreen = ({
   // Моковые данные продуктов
   const products = [
     {
-      id: '1',
-      name: 'СВЕЖИЕ МОРЕПРОДУКТЫ ПРЕМИУМ КАЧЕСТВА',
-      image: '/images/Seafood.jpg',
-      chefImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-      chefName: 'Шеф Александр Курочкин',
-      price: 1899,
-      category: 'seafood'
+      id: 1,
+      name: 'Морские дары',
+      description: 'Свежие морепродукты с лимоном и травами',
+      price: 1200,
+      image: '', // Убрал изображение
+      chef: {
+        id: '1',
+        name: 'Алексей Петров',
+        image: '', // Убрал изображение
+        avatar: '', // Убрал изображение
+        specialty: 'Морепродукты',
+        speciality: 'Морепродукты',
+        rating: 4.8,
+        experience: '8 лет',
+        location: 'Москва',
+        bio: 'Специалист по морепродуктам',
+        dishes: ['Устрицы', 'Лобстер', 'Креветки']
+      }
     },
     {
-      id: '2',
-      name: 'ИТАЛЬЯНСКАЯ ПАСТА С ДОМАШНИМ СОУСОМ',
-      image: '/images/pasta.jpg',
-      chefImage: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
-      chefName: 'Шеф Мария Шарапова',
-      price: 1299,
-      category: 'pasta'
+      id: 2,
+      name: 'Паста Карбонара',
+      description: 'Классическая итальянская паста с беконом и яйцом',
+      price: 800,
+      image: '', // Убрал изображение
+      chef: {
+        id: '2',
+        name: 'Мария Сидорова',
+        image: '', // Убрал изображение
+        avatar: '', // Убрал изображение
+        specialty: 'Итальянская кухня',
+        speciality: 'Итальянская кухня',
+        rating: 4.9,
+        experience: '12 лет',
+        location: 'Санкт-Петербург',
+        bio: 'Мастер итальянской кухни',
+        dishes: ['Паста', 'Пицца', 'Ризотто']
+      }
     },
     {
-      id: '3',
-      name: 'ГРИЛЬ ЛОСОСЬ С ОВОЩАМИ И ЛИМОНОМ',
-      image: '/images/salmon.jpeg',
-      chefImage: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
-      chefName: 'Шеф Дмитрий Готовчик',
-      price: 2499,
-      category: 'seafood'
+      id: 3,
+      name: 'Лосось на гриле',
+      description: 'Филе лосося с овощами и соусом',
+      price: 1500,
+      image: '', // Убрал изображение
+      chef: {
+        id: '3',
+        name: 'Дмитрий Козлов',
+        image: '', // Убрал изображение
+        avatar: '', // Убрал изображение
+        specialty: 'Рыбные блюда',
+        speciality: 'Рыбные блюда',
+        rating: 4.7,
+        experience: '10 лет',
+        location: 'Казань',
+        bio: 'Эксперт по рыбным блюдам',
+        dishes: ['Лосось', 'Тунец', 'Морской окунь']
+      }
     },
     {
-      id: '4',
-      name: 'СТЕЙК ИЗ ГОВЯДИНЫ С ГАРНИРОМ',
-      image: '/images/steak.jpg',
-      chefImage: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
-      chefName: 'Шеф Анна Каренина',
-      price: 1899,
-      category: 'meat'
+      id: 4,
+      name: 'Стейк Рибай',
+      description: 'Сочный стейк с картофелем и овощами',
+      price: 2000,
+      image: '', // Убрал изображение
+      chef: {
+        id: '4',
+        name: 'Анна Волкова',
+        image: '', // Убрал изображение
+        avatar: '', // Убрал изображение
+        specialty: 'Мясные блюда',
+        speciality: 'Мясные блюда',
+        rating: 4.8,
+        experience: '15 лет',
+        location: 'Екатеринбург',
+        bio: 'Мастер стейков',
+        dishes: ['Стейк', 'Бургер', 'Ростбиф']
+      }
     },
     {
-      id: '5',
-      name: 'ПАСТА КАРБОНАРА С БЕКОНОМ И СЫРОМ',
-      image: '/images/carbonara.jpg',
-      chefImage: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face',
-      chefName: 'Шеф Марко Антонио',
-      price: 1499,
-      category: 'pasta'
+      id: 5,
+      name: 'Карбонара',
+      description: 'Паста с беконом, яйцом и сыром',
+      price: 900,
+      image: '', // Убрал изображение
+      chef: {
+        id: '5',
+        name: 'Сергей Иванов',
+        image: '', // Убрал изображение
+        avatar: '', // Убрал изображение
+        specialty: 'Паста',
+        speciality: 'Паста',
+        rating: 4.6,
+        experience: '9 лет',
+        location: 'Новосибирск',
+        bio: 'Специалист по пасте',
+        dishes: ['Карбонара', 'Болоньезе', 'Альфредо']
+      }
     },
     {
-      id: '6',
-      name: 'КУРИНАЯ ГРУДКА С ОВОЩАМИ И ТРАВАМИ',
-      image: '/images/chicken.jpg',
-      chefImage: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face',
-      chefName: 'Шеф Елена Чичикова',
-      price: 999,
-      category: 'meat'
+      id: 6,
+      name: 'Курица по-французски',
+      description: 'Куриная грудка с грибами и сыром',
+      price: 700,
+      image: '', // Убрал изображение
+      chef: {
+        id: '6',
+        name: 'Елена Смирнова',
+        image: '', // Убрал изображение
+        avatar: '', // Убрал изображение
+        specialty: 'Французская кухня',
+        speciality: 'Французская кухня',
+        rating: 4.5,
+        experience: '11 лет',
+        location: 'Ростов-на-Дону',
+        bio: 'Эксперт французской кухни',
+        dishes: ['Курица', 'Утка', 'Телятина']
+      }
     }
   ];
 
@@ -131,88 +197,48 @@ export const MainScreen = ({
   const chefs = [
     {
       id: '1',
-      name: 'Шеф Александр',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+      name: 'Алексей Петров',
+      image: '', // Убрал изображение
+      avatar: '', // Убрал изображение
       specialty: 'Морепродукты',
       speciality: 'Морепродукты',
-      rating: 4.9,
-      experience: '15 лет',
+      rating: 4.8,
+      experience: '8 лет',
       location: 'Москва',
-      bio: 'Эксперт по морепродуктам с 15-летним опытом работы в лучших ресторанах. Специализируется на приготовлении свежих морепродуктов и рыбных блюд.',
-      dishes: ['Морепродукты', 'Рыба', 'Устрицы', 'Креветки']
+      bio: 'Специалист по морепродуктам',
+      dishes: ['Устрицы', 'Лобстер', 'Креветки']
     },
     {
       id: '2',
-      name: 'Шеф Мария',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
-      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
+      name: 'Мария Сидорова',
+      image: '', // Убрал изображение
+      avatar: '', // Убрал изображение
       specialty: 'Итальянская кухня',
       speciality: 'Итальянская кухня',
-      rating: 4.8,
+      rating: 4.9,
       experience: '12 лет',
       location: 'Санкт-Петербург',
-      bio: 'Мастер итальянской кухни с глубоким пониманием традиционных рецептов. Готовит аутентичные пасты и соусы.',
-      dishes: ['Паста', 'Пицца', 'Ризотто', 'Соусы']
+      bio: 'Мастер итальянской кухни',
+      dishes: ['Паста', 'Пицца', 'Ризотто']
     },
     {
       id: '3',
-      name: 'Шеф Дмитрий',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
-      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
-      specialty: 'Рыба и морепродукты',
-      speciality: 'Рыба и морепродукты',
+      name: 'Дмитрий Козлов',
+      image: '', // Убрал изображение
+      avatar: '', // Убрал изображение
+      specialty: 'Рыбные блюда',
+      speciality: 'Рыбные блюда',
       rating: 4.7,
       experience: '10 лет',
-      location: 'Сочи',
-      bio: 'Специалист по приготовлению рыбы и морепродуктов. Использует только свежие ингредиенты и современные техники приготовления.',
-      dishes: ['Лосось', 'Тунец', 'Морепродукты', 'Гриль']
-    },
-    {
-      id: '4',
-      name: 'Шеф Анна',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
-      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
-      specialty: 'Мясные блюда',
-      speciality: 'Мясные блюда',
-      rating: 4.9,
-      experience: '18 лет',
       location: 'Казань',
-      bio: 'Эксперт по приготовлению мясных блюд. Создает изысканные стейки и мясные блюда с использованием лучших сортов мяса.',
-      dishes: ['Стейки', 'Говядина', 'Баранина', 'Свинина']
-    },
-    {
-      id: '5',
-      name: 'Шеф Марко',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face',
-      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face',
-      specialty: 'Итальянская кухня',
-      speciality: 'Итальянская кухня',
-      rating: 4.8,
-      experience: '14 лет',
-      location: 'Ростов-на-Дону',
-      bio: 'Настоящий итальянец с глубокими знаниями традиционной кухни. Специализируется на пастах и классических итальянских блюдах.',
-      dishes: ['Карбонара', 'Болоньезе', 'Карбонара', 'Лазанья']
-    },
-    {
-      id: '6',
-      name: 'Шеф Елена',
-      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face',
-      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face',
-      specialty: 'Здоровое питание',
-      speciality: 'Здоровое питание',
-      rating: 4.6,
-      experience: '8 лет',
-      location: 'Новосибирск',
-      bio: 'Специалист по здоровому питанию и диетическим блюдам. Создает вкусные и полезные блюда из качественных ингредиентов.',
-      dishes: ['Курица', 'Овощи', 'Диетические блюда', 'Салаты']
+      bio: 'Эксперт по рыбным блюдам',
+      dishes: ['Лосось', 'Тунец', 'Морской окунь']
     }
   ];
 
   const filteredProducts = products.filter(product => {
-    const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory.toLowerCase();
     const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
+    return matchesSearch;
   });
 
     // Если открыта страница кухни, показываем только её
@@ -504,11 +530,11 @@ export const MainScreen = ({
                   <div className="absolute -top-1 -right-1">
                     <div className="relative">
                                               <img 
-                         src={product.chefImage} 
-                         alt={product.chefName}
+                         src={product.chef.avatar} 
+                         alt={product.chef.name}
                          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white shadow-[0_0_8px_rgba(255,255,255,0.8)] object-cover cursor-pointer hover:scale-110 transition-transform"
                         onClick={() => {
-                          const chef = chefs.find(c => c.name === product.chefName);
+                          const chef = chefs.find(c => c.name === product.chef.name);
                           if (chef) setSelectedChef(chef);
                         }}
                         onError={(e) => {
@@ -525,7 +551,7 @@ export const MainScreen = ({
                     {product.name}
                   </p>
                   <p className="text-xs text-orange-600 font-medium mt-0.5">
-                    {product.chefName}
+                    {product.chef.name}
                   </p>
                 </div>
               </div>

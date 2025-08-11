@@ -12,7 +12,7 @@ export const ChefProfile: React.FC<ChefProfileProps> = ({ chef, onBack, onAddToC
     {
       id: '1',
       name: 'Паста Карбонара',
-      image: 'https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg',
+      image: '', // Убрал изображение
       price: 850,
       rating: 4.8,
       cookTime: '25 мин'
@@ -20,7 +20,7 @@ export const ChefProfile: React.FC<ChefProfileProps> = ({ chef, onBack, onAddToC
     {
       id: '2',
       name: 'Ризотто с грибами',
-      image: 'https://images.pexels.com/photos/1234567/pexels-photo-1234567.jpeg',
+      image: '', // Убрал изображение
       price: 950,
       rating: 4.7,
       cookTime: '30 мин'
@@ -28,7 +28,7 @@ export const ChefProfile: React.FC<ChefProfileProps> = ({ chef, onBack, onAddToC
     {
       id: '3',
       name: 'Тирамису',
-      image: 'https://images.pexels.com/photos/1234567/pexels-photo-1234567.jpeg',
+      image: '', // Убрал изображение
       price: 450,
       rating: 4.9,
       cookTime: '15 мин'
@@ -42,6 +42,7 @@ export const ChefProfile: React.FC<ChefProfileProps> = ({ chef, onBack, onAddToC
         <button 
           onClick={onBack}
           className="p-2 rounded-full bg-orange-100 hover:bg-orange-200 transition-colors mr-4"
+          aria-label="Назад"
         >
           <ArrowLeft size={24} className="text-orange-600" />
         </button>
@@ -53,7 +54,7 @@ export const ChefProfile: React.FC<ChefProfileProps> = ({ chef, onBack, onAddToC
         <div className="bg-white rounded-3xl shadow-lg p-6 mb-6">
           <div className="flex items-center space-x-4 mb-4">
             <img
-              src={chef?.avatar || 'https://images.pexels.com/photos/8629131/pexels-photo-8629131.jpeg'}
+              src={chef?.avatar || ''}
               alt={chef?.name || 'Chef'}
               className="w-20 h-20 rounded-full object-cover"
             />
@@ -75,7 +76,10 @@ export const ChefProfile: React.FC<ChefProfileProps> = ({ chef, onBack, onAddToC
                 <h3 className="font-bold mb-1">Видео-визитка</h3>
                 <p className="text-sm opacity-90">10 секунд о моем подходе к готовке</p>
               </div>
-              <button className="bg-white/20 backdrop-blur-sm rounded-full p-3 hover:bg-white/30 transition-colors">
+              <button 
+                className="bg-white/20 backdrop-blur-sm rounded-full p-3 hover:bg-white/30 transition-colors"
+                aria-label="Воспроизвести видео"
+              >
                 <div className="w-0 h-0 border-l-[12px] border-l-white border-y-[8px] border-y-transparent ml-1" />
               </button>
             </div>
@@ -103,7 +107,7 @@ export const ChefProfile: React.FC<ChefProfileProps> = ({ chef, onBack, onAddToC
           <h3 className="font-bold text-gray-800 mb-3">Моя кухня</h3>
           <div 
             className="h-32 bg-cover bg-center rounded-xl"
-            style={{ backgroundImage: 'url(https://images.pexels.com/photos/1234567/pexels-photo-1234567.jpeg)' }}
+            style={{ backgroundImage: 'url()' }}
           >
             <div className="h-full bg-black/20 rounded-xl flex items-end p-4">
               <p className="text-white text-sm">Чистота и качество — мои принципы</p>

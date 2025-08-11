@@ -7,7 +7,7 @@ interface JapaneseCuisineProps {
 }
 
 interface Dish {
-  id: string;
+  id: number;
   name: string;
   description: string;
   image: string;
@@ -18,7 +18,6 @@ interface Dish {
   chef: {
     name: string;
     avatar: string;
-    speciality: string;
     rating: number;
   };
 }
@@ -32,163 +31,162 @@ export const JapaneseCuisine: React.FC<JapaneseCuisineProps> = ({ onBack }) => {
 
   const japaneseDishes: Dish[] = [
     {
-      id: '1',
-      name: 'Суши Филадельфия',
-      description: 'Ролл с лососем, сливочным сыром и огурцом',
-      image: 'https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg',
-      price: 1800,
-      cookTime: '15 мин',
-      rating: 4.9,
-      tags: ['суши', 'лосось', 'сыр'],
+      id: 1,
+      name: 'Суши Ролл Калифорния',
+      description: 'Ролл с крабом, авокадо и огурцом',
+      image: '', // Убрал изображение
+      price: 800,
+      cookTime: '10 мин',
+      rating: 4.8,
+      tags: ['Суши', 'Ролл', 'Краб'],
       chef: {
         name: 'Хироши Танака',
-        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-        speciality: 'Суши',
+        avatar: '', // Убрал изображение
         rating: 4.9
       }
     },
     {
-      id: '2',
+      id: 2,
       name: 'Рамен Тонкоцу',
-      description: 'Лапша в густом свином бульоне с яйцом и свининой',
-      image: 'https://images.pexels.com/photos/1907244/pexels-photo-1907244.jpeg',
+      description: 'Лапша в свином бульоне с яйцом и свининой',
+      image: '', // Убрал изображение
       price: 1200,
       cookTime: '25 мин',
-      rating: 4.8,
-      tags: ['рамен', 'лапша', 'свинина'],
+      rating: 4.7,
+      tags: ['Рамен', 'Лапша', 'Свинина'],
       chef: {
         name: 'Юкико Сато',
-        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
-        speciality: 'Рамен',
-        rating: 4.8
+        avatar: '', // Убрал изображение
+        rating: 4.8,
+        experience: '15 лет'
       }
     },
     {
-      id: '3',
+      id: 3,
       name: 'Темпура',
       description: 'Креветки и овощи в хрустящем кляре',
-      image: 'https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg',
-      price: 1400,
-      cookTime: '20 мин',
-      rating: 4.7,
-      tags: ['темпура', 'креветки', 'кляр'],
-      chef: {
-        name: 'Кейсуке Ямамото',
-        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
-        speciality: 'Темпура',
-        rating: 4.7
-      }
-    },
-    {
-      id: '4',
-      name: 'Якитори',
-      description: 'Куриные шашлычки на гриле с соусом терияки',
-      image: 'https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg',
-      price: 950,
+      image: '', // Убрал изображение
+      price: 1100,
       cookTime: '15 мин',
       rating: 4.6,
-      tags: ['якитори', 'курица', 'гриль'],
+      tags: ['Темпура', 'Креветки', 'Овощи'],
       chef: {
-        name: 'Такаши Накамура',
-        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face',
-        speciality: 'Якитори',
-        rating: 4.6
+        name: 'Кейсуке Ямамото',
+        avatar: '', // Убрал изображение
+        rating: 4.7,
+        experience: '18 лет'
       }
     },
     {
-      id: '5',
-      name: 'Окономияки',
-      description: 'Японская пицца с капустой, морепродуктами и соусом',
-      image: 'https://images.pexels.com/photos/825661/pexels-photo-825661.jpeg',
-      price: 1100,
-      cookTime: '30 мин',
-      rating: 4.5,
-      tags: ['окономияки', 'капуста', 'морепродукты'],
+      id: 4,
+      name: 'Сашими Лосось',
+      description: 'Свежий лосось с васаби и имбирем',
+      image: '', // Убрал изображение
+      price: 900,
+      cookTime: '5 мин',
+      rating: 4.9,
+      tags: ['Сашими', 'Лосось', 'Свежее'],
       chef: {
-        name: 'Мики Осака',
-        avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face',
-        speciality: 'Окономияки',
-        rating: 4.5
+        name: 'Акико Накамура',
+        avatar: '', // Убрал изображение
+        rating: 4.8,
+        experience: '16 лет'
       }
     },
     {
-      id: '6',
-      name: 'Мисо Суп',
-      description: 'Традиционный суп с пастой мисо и тофу',
-      image: 'https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg',
-      price: 650,
-      cookTime: '10 мин',
-      rating: 4.4,
-      tags: ['мисо', 'суп', 'тофу'],
-      chef: {
-        name: 'Акико Фудзимото',
-        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
-        speciality: 'Супы',
-        rating: 4.4
-      }
-    },
-    {
-      id: '7',
-      name: 'Гёдза',
-      description: 'Пельмени с начинкой из свинины и овощей',
-      image: 'https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg',
-      price: 850,
-      cookTime: '12 мин',
-      rating: 4.6,
-      tags: ['гёдза', 'пельмени', 'свинина'],
-      chef: {
-        name: 'Рейко Танака',
-        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-        speciality: 'Гёдза',
-        rating: 4.6
-      }
-    },
-    {
-      id: '8',
-      name: 'Тонкацу',
-      description: 'Свиная отбивная в панировке с капустой',
-      image: 'https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg',
-      price: 1300,
+      id: 5,
+      name: 'Якитори',
+      description: 'Куриные шашлычки на гриле с соусом терияки',
+      image: '', // Убрал изображение
+      price: 700,
       cookTime: '20 мин',
-      rating: 4.7,
-      tags: ['тонкацу', 'свинина', 'панировка'],
+      rating: 4.5,
+      tags: ['Якитори', 'Курица', 'Гриль'],
       chef: {
-        name: 'Кенджи Ишида',
-        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
-        speciality: 'Тонкацу',
-        rating: 4.7
+        name: 'Такуя Ишида',
+        avatar: '', // Убрал изображение
+        rating: 4.6,
+        experience: '12 лет'
       }
     },
     {
-      id: '9',
-      name: 'Удон',
-      description: 'Толстая лапша в бульоне с овощами и мясом',
-      image: 'https://images.pexels.com/photos/1907244/pexels-photo-1907244.jpeg',
+      id: 6,
+      name: 'Гёдза',
+      description: 'Пельмени с курицей и овощами',
+      image: '', // Убрал изображение
+      price: 600,
+      cookTime: '12 мин',
+      rating: 4.7,
+      tags: ['Гёдза', 'Пельмени', 'Курица'],
+      chef: {
+        name: 'Мики Фуджита',
+        avatar: '', // Убрал изображение
+        rating: 4.8,
+        experience: '14 лет'
+      }
+    },
+    {
+      id: 7,
+      name: 'Удон с говядиной',
+      description: 'Толстая лапша с говядиной и овощами',
+      image: '', // Убрал изображение
       price: 1000,
       cookTime: '18 мин',
-      rating: 4.5,
-      tags: ['удон', 'лапша', 'бульон'],
+      rating: 4.6,
+      tags: ['Удон', 'Лапша', 'Говядина'],
       chef: {
-        name: 'Харуки Ватанабе',
-        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
-        speciality: 'Удон',
-        rating: 4.5
+        name: 'Рётаро Окада',
+        avatar: '', // Убрал изображение
+        rating: 4.7,
+        experience: '13 лет'
       }
     },
     {
-      id: '10',
+      id: 8,
+      name: 'Окономияки',
+      description: 'Японский омлет с капустой и морепродуктами',
+      image: '', // Убрал изображение
+      price: 850,
+      cookTime: '22 мин',
+      rating: 4.5,
+      tags: ['Окономияки', 'Омлет', 'Капуста'],
+      chef: {
+        name: 'Харуко Ватанабе',
+        avatar: '', // Убрал изображение
+        rating: 4.6,
+        experience: '11 лет'
+      }
+    },
+    {
+      id: 9,
+      name: 'Такояки',
+      description: 'Шарики из теста с осьминогом',
+      image: '', // Убрал изображение
+      price: 750,
+      cookTime: '15 мин',
+      rating: 4.8,
+      tags: ['Такояки', 'Осьминог', 'Закуска'],
+      chef: {
+        name: 'Кентаро Миямото',
+        avatar: '', // Убрал изображение
+        rating: 4.9,
+        experience: '17 лет'
+      }
+    },
+    {
+      id: 10,
       name: 'Моти',
       description: 'Сладкие рисовые лепешки с начинкой',
-      image: 'https://images.pexels.com/photos/3071821/pexels-photo-3071821.jpeg',
-      price: 450,
+      image: '', // Убрал изображение
+      price: 400,
       cookTime: '8 мин',
-      rating: 4.3,
-      tags: ['моти', 'десерт', 'рис'],
+      rating: 4.7,
+      tags: ['Моти', 'Десерт', 'Рис'],
       chef: {
-        name: 'Сакура Миямото',
-        avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face',
-        speciality: 'Десерты',
-        rating: 4.3
+        name: 'Сакура Танака',
+        avatar: '', // Убрал изображение
+        rating: 4.8,
+        experience: '19 лет'
       }
     }
   ];

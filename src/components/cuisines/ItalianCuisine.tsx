@@ -32,163 +32,163 @@ export const ItalianCuisine: React.FC<ItalianCuisineProps> = ({ onBack }) => {
 
   const italianDishes: Dish[] = [
     {
-      id: '1',
+      id: 1,
       name: 'Паста Карбонара',
-      description: 'Классическая паста с беконом, яйцами и сыром пармезан',
-      image: 'https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg',
+      description: 'Классическая паста с беконом, яйцом и сыром пекорино романо',
+      image: '', // Убрал изображение
       price: 1200,
-      cookTime: '25 мин',
+      cookTime: '20 мин',
       rating: 4.8,
-      tags: ['паста', 'бекон', 'сыр'],
+      tags: ['Классика', 'Паста', 'Бекон'],
       chef: {
-        name: 'Марко Росси',
-        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-        speciality: 'Итальянская кухня',
-        rating: 4.9
+        name: 'Марко Антонио',
+        avatar: '', // Убрал изображение
+        rating: 4.9,
+        experience: '15 лет'
       }
     },
     {
-      id: '2',
+      id: 2,
       name: 'Пицца Маргарита',
       description: 'Традиционная пицца с томатным соусом, моцареллой и базиликом',
-      image: 'https://images.pexels.com/photos/825661/pexels-photo-825661.jpeg',
-      price: 950,
-      cookTime: '20 мин',
+      image: '', // Убрал изображение
+      price: 900,
+      cookTime: '15 мин',
       rating: 4.7,
-      tags: ['пицца', 'томаты', 'моцарелла'],
+      tags: ['Пицца', 'Классика', 'Вегетарианская'],
       chef: {
-        name: 'Джулия Бертолини',
-        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
-        speciality: 'Пицца',
-        rating: 4.8
+        name: 'Джулия Романо',
+        avatar: '', // Убрал изображение
+        rating: 4.8,
+        experience: '12 лет'
       }
     },
     {
-      id: '3',
+      id: 3,
       name: 'Ризотто с грибами',
       description: 'Кремовое ризотто с лесными грибами и пармезаном',
-      image: 'https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg',
+      image: '', // Убрал изображение
       price: 1100,
-      cookTime: '30 мин',
+      cookTime: '25 мин',
       rating: 4.6,
-      tags: ['ризотто', 'грибы', 'пармезан'],
+      tags: ['Ризотто', 'Грибы', 'Кремовое'],
       chef: {
-        name: 'Антонио Феррари',
-        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
-        speciality: 'Ризотто',
-        rating: 4.7
+        name: 'Карло Бьянки',
+        avatar: '', // Убрал изображение
+        rating: 4.7,
+        experience: '18 лет'
       }
     },
     {
-      id: '4',
+      id: 4,
       name: 'Лазанья Болоньезе',
       description: 'Слоеная лазанья с мясным соусом и бешамель',
-      image: 'https://images.pexels.com/photos/5949890/pexels-photo-5949890.jpeg',
+      image: '', // Убрал изображение
       price: 1400,
       cookTime: '45 мин',
       rating: 4.9,
-      tags: ['лазанья', 'мясо', 'соус'],
+      tags: ['Лазанья', 'Мясо', 'Слоеная'],
       chef: {
-        name: 'Карло Манчини',
-        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face',
-        speciality: 'Лазанья',
-        rating: 4.9
+        name: 'Анна Феррари',
+        avatar: '', // Убрал изображение
+        rating: 4.8,
+        experience: '14 лет'
       }
     },
     {
-      id: '5',
+      id: 5,
       name: 'Оссобуко',
       description: 'Тушеная телячья голень с овощами и ризотто',
-      image: 'https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg',
+      image: '', // Убрал изображение
       price: 1800,
-      cookTime: '90 мин',
-      rating: 4.8,
-      tags: ['телятина', 'тушение', 'ризотто'],
+      cookTime: '2 часа',
+      rating: 4.7,
+      tags: ['Мясо', 'Тушеное', 'Традиционное'],
       chef: {
-        name: 'Лука Спагетти',
-        avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face',
-        speciality: 'Мясные блюда',
-        rating: 4.8
+        name: 'Лука Росси',
+        avatar: '', // Убрал изображение
+        rating: 4.6,
+        experience: '16 лет'
       }
     },
     {
-      id: '6',
+      id: 6,
       name: 'Тирамису',
       description: 'Классический десерт с кофе, маскарпоне и савоярди',
-      image: 'https://images.pexels.com/photos/3071821/pexels-photo-3071821.jpeg',
-      price: 650,
+      image: '', // Убрал изображение
+      price: 600,
+      cookTime: '30 мин',
+      rating: 4.9,
+      tags: ['Десерт', 'Кофе', 'Кремовый'],
+      chef: {
+        name: 'София Конти',
+        avatar: '', // Убрал изображение
+        rating: 4.9,
+        experience: '13 лет'
+      }
+    },
+    {
+      id: 7,
+      name: 'Паста Аматричана',
+      description: 'Паста с гуанчале, томатами и пекорино',
+      image: '', // Убрал изображение
+      price: 1000,
+      cookTime: '18 мин',
+      rating: 4.5,
+      tags: ['Паста', 'Гуанчале', 'Острое'],
+      chef: {
+        name: 'Роберто Морено',
+        avatar: '', // Убрал изображение
+        rating: 4.7,
+        experience: '11 лет'
+      }
+    },
+    {
+      id: 8,
+      name: 'Пицца Четыре сыра',
+      description: 'Пицца с моцареллой, горгонзолой, пармезаном и рикоттой',
+      image: '', // Убрал изображение
+      price: 1100,
+      cookTime: '18 мин',
+      rating: 4.6,
+      tags: ['Пицца', 'Сыр', 'Вегетарианская'],
+      chef: {
+        name: 'Элена Витали',
+        avatar: '', // Убрал изображение
+        rating: 4.8,
+        experience: '15 лет'
+      }
+    },
+    {
+      id: 9,
+      name: 'Ризотто с морепродуктами',
+      description: 'Ризотто с креветками, кальмарами и мидиями',
+      image: '', // Убрал изображение
+      price: 1500,
+      cookTime: '30 мин',
+      rating: 4.8,
+      tags: ['Ризотто', 'Морепродукты', 'Кремовое'],
+      chef: {
+        name: 'Джанкарло Марино',
+        avatar: '', // Убрал изображение
+        rating: 4.9,
+        experience: '17 лет'
+      }
+    },
+    {
+      id: 10,
+      name: 'Паста с трюфелем',
+      description: 'Паста с черным трюфелем, маслом и пармезаном',
+      image: '', // Убрал изображение
+      price: 2200,
       cookTime: '15 мин',
       rating: 4.9,
-      tags: ['десерт', 'кофе', 'маскарпоне'],
+      tags: ['Паста', 'Трюфель', 'Премиум'],
       chef: {
-        name: 'София Эспозито',
-        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
-        speciality: 'Десерты',
-        rating: 4.9
-      }
-    },
-    {
-      id: '7',
-      name: 'Паста Аматричана',
-      description: 'Паста с гуанчале, томатами и пекорино романо',
-      image: 'https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg',
-      price: 1150,
-      cookTime: '25 мин',
-      rating: 4.7,
-      tags: ['паста', 'гуанчале', 'пекорино'],
-      chef: {
-        name: 'Роберто Бруно',
-        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-        speciality: 'Паста',
-        rating: 4.8
-      }
-    },
-    {
-      id: '8',
-      name: 'Пицца Четыре Сыра',
-      description: 'Пицца с моцареллой, горгонзолой, пармезаном и рикоттой',
-      image: 'https://images.pexels.com/photos/825661/pexels-photo-825661.jpeg',
-      price: 1200,
-      cookTime: '20 мин',
-      rating: 4.6,
-      tags: ['пицца', 'сыры', 'моцарелла'],
-      chef: {
-        name: 'Мария Конти',
-        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
-        speciality: 'Пицца',
-        rating: 4.7
-      }
-    },
-    {
-      id: '9',
-      name: 'Ризотто с морепродуктами',
-      description: 'Кремовое ризотто с креветками, кальмарами и мидиями',
-      image: 'https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg',
-      price: 1600,
-      cookTime: '35 мин',
-      rating: 4.8,
-      tags: ['ризотто', 'морепродукты', 'креветки'],
-      chef: {
-        name: 'Джанни Морелли',
-        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
-        speciality: 'Морепродукты',
-        rating: 4.8
-      }
-    },
-    {
-      id: '10',
-      name: 'Панна Котта',
-      description: 'Нежный десерт с ванилью и ягодным соусом',
-      image: 'https://images.pexels.com/photos/3071821/pexels-photo-3071821.jpeg',
-      price: 550,
-      cookTime: '10 мин',
-      rating: 4.7,
-      tags: ['десерт', 'ваниль', 'ягоды'],
-      chef: {
-        name: 'Элена Россо',
-        avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face',
-        speciality: 'Десерты',
-        rating: 4.7
+        name: 'Федерико Неро',
+        avatar: '', // Убрал изображение
+        rating: 4.9,
+        experience: '20 лет'
       }
     }
   ];
